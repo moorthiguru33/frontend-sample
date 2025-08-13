@@ -1,14 +1,8 @@
 # API proxies
-/api/* https://your-railway-app.railway.app/:splat 200
-
-# Health check
-/health https://your-railway-app.railway.app/health 200
-
-# Song generation
-/generate-song https://your-railway-app.railway.app/generate-song 200
-
-# Downloads
-/download/* https://your-railway-app.railway.app/download/:splat 200
+/api/* https://tamil-ai-song-generator-backend.onrender.com/:splat 200
+/health https://tamil-ai-song-generator-backend.onrender.com/health 200
+/generate-song https://tamil-ai-song-generator-backend.onrender.com/generate-song 200
+/download/* https://tamil-ai-song-generator-backend.onrender.com/download/:splat 200
 
 # SPA fallback
 /* /index.html 200
