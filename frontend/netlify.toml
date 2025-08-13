@@ -1,13 +1,11 @@
 [build]
+  base = "frontend/"
   publish = "."
   command = "echo 'Static site deployment'"
 
-[build.environment]
-  NODE_VERSION = "18"
-
 [[redirects]]
   from = "/api/*"
-  to = "https://your-railway-app.railway.app/:splat"
+  to = "https://tamil-ai-song-generator-backend.onrender.com/:splat"
   status = 200
   force = true
 
@@ -15,35 +13,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://your-railway-app.railway.app"
-
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    Content-Type = "text/html; charset=utf-8"
-
-[functions]
-  # No functions needed for static site
-
-[dev]
-  command = "python -m http.server 3000"
-  port = 3000
-  publish = "."
