@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil AI Song Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1><i class="fas fa-music"></i> Tamil AI Song Generator</h1>
+            <p>Transform your Kavithai into beautiful Tamil music with traditional instruments</p>
+        </header>
+
+        <!-- AI Model Selection Section -->
+        <section class="models-section">
+            <h2><i class="fas fa-robot"></i> Choose AI Model</h2>
+            <div class="models-grid">
+                <div class="model-card active" data-model="musicgen">
+                    <div class="model-icon"><i class="fas fa-brain"></i></div>
+                    <div class="model-info">
+                        <h3>MusicGen (Meta)</h3>
+                        <p>Advanced music generation with traditional instruments</p>
+                        <div class="model-tags">
+                            <span class="tag">Open Source</span>
+                            <span class="tag">High Quality</span>
+                            <span class="tag">Multi-instrument</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card" data-model="audioldm">
+                    <div class="model-icon"><i class="fas fa-wave-square"></i></div>
+                    <div class="model-info">
+                        <h3>AudioLDM</h3>
+                        <p>Atmospheric background music generation</p>
+                        <div class="model-tags">
+                            <span class="tag">Open Source</span>
+                            <span class="tag">Atmospheric</span>
+                            <span class="tag">Fast</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card" data-model="musiclm">
+                    <div class="model-icon"><i class="fas fa-music"></i></div>
+                    <div class="model-info">
+                        <h3>MusicLM Style</h3>
+                        <p>Cultural authenticity focused generation</p>
+                        <div class="model-tags">
+                            <span class="tag">Cultural</span>
+                            <span class="tag">Authentic</span>
+                            <span class="tag">Detailed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="form-section">
+                <div class="card">
+                    <h2><i class="fas fa-edit"></i> Create Your Song</h2>
+                    
+                    <form id="songForm">
+                        <div class="form-group">
+                            <label for="kavithai">
+                                <i class="fas fa-feather"></i> Tamil Poetry (Kavithai)
+                            </label>
+                            <textarea id="kavithai" rows="6" placeholder="உங்கள் கவிதையை இங்கே எழுதுங்கள்...
+
+Example:
+காலை வேளையில் சூரியன் உதிக்கும்
+கனவுகள் நனவாகும் நேரம்
+பறவைகள் பாடும் இசையில்
+புதிய நாள் ஆரம்பமாகும்" required></textarea>
+                            <button type="button" class="sample-btn" id="sampleBtn">
+                                <i class="fas fa-lightbulb"></i> Try Sample
+                            </button>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="genre">
+                                    <i class="fas fa-guitar"></i> Genre
+                                </label>
+                                <select id="genre">
+                                    <option value="classical">Classical Tamil</option>
+                                    <option value="carnatic">Carnatic</option>
+                                    <option value="folk">Folk Tamil</option>
+                                    <option value="devotional">Devotional</option>
+                                    <option value="contemporary">Contemporary</option>
+                                    <option value="fusion">Fusion</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mood">
+                                    <i class="fas fa-music"></i> Mood/Raga
+                                </label>
+                                <select id="mood">
+                                    <option value="peaceful">Peaceful (Shankarabharanam)</option>
+                                    <option value="joyful">Joyful (Kalyani)</option>
+                                    <option value="romantic">Romantic (Mohanam)</option>
+                                    <option value="devotional">Devotional (Bhairavi)</option>
+                                    <option value="energetic">Energetic (Kharaharapriya)</option>
+                                    <option value="melancholic">Melancholic (Sahana)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-drum"></i> Traditional Instruments
+                            </label>
+                            <div class="instruments-grid">
+                                <div class="instrument-card active" data-instrument="tabla">
+                                    <i class="fas fa-circle"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Tabla</span>
+                                        <span class="instrument-desc">Percussion rhythm</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card active" data-instrument="veena">
+                                    <i class="fas fa-guitar"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Veena</span>
+                                        <span class="instrument-desc">String melody</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card active" data-instrument="flute">
+                                    <i class="fas fa-music"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Pullanguzhal</span>
+                                        <span class="instrument-desc">Bamboo flute</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card" data-instrument="mridangam">
+                                    <i class="fas fa-drum"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Mridangam</span>
+                                        <span class="instrument-desc">South Indian drums</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card" data-instrument="violin">
+                                    <i class="fas fa-violin"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Violin</span>
+                                        <span class="instrument-desc">String harmony</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card active" data-instrument="keyboard">
+                                    <i class="fas fa-keyboard"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Keyboard</span>
+                                        <span class="instrument-desc">Harmonic foundation</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card" data-instrument="thavil">
+                                    <i class="fas fa-drum"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Thavil</span>
+                                        <span class="instrument-desc">Traditional percussion</span>
+                                    </div>
+                                </div>
+                                <div class="instrument-card" data-instrument="nadhaswaram">
+                                    <i class="fas fa-trumpet"></i>
+                                    <div class="instrument-info">
+                                        <span class="instrument-name">Nadhaswaram</span>
+                                        <span class="instrument-desc">Traditional wind</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="voice">
+                                    <i class="fas fa-microphone"></i> Voice Type
+                                </label>
+                                <select id="voice">
+                                    <option value="female">Female Tamil Voice</option>
+                                    <option value="male">Male Tamil Voice</option>
+                                    <option value="child">Child Tamil Voice</option>
+                                    <option value="chorus">Tamil Chorus</option>
+                                    <option value="none">Instrumental Only</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">
+                                    <i class="fas fa-clock"></i> Duration
+                                </label>
+                                <select id="duration">
+                                    <option value="30">30 seconds</option>
+                                    <option value="60" selected>1 minute</option>
+                                    <option value="120">2 minutes</option>
+                                    <option value="180">3 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="generate-btn" id="generateBtn">
+                            <i class="fas fa-magic"></i>
+                            <span>Generate Tamil Song</span>
+                        </button>
+                    </form>
+
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Initializing...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <div class="card" id="resultCard" style="display: none;">
+                    <h2><i class="fas fa-headphones"></i> Your Generated Song</h2>
+                    
+                    <div class="song-info" id="songInfo"></div>
+                    
+                    <div class="audio-container">
+                        <audio controls id="audioPlayer" class="audio-player" style="display: none;">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="download-buttons" id="downloadButtons" style="display: none;">
+                        <button class="download-btn" id="downloadWav">
+                            <i class="fas fa-download"></i> Download WAV
+                        </button>
+                        <button class="download-btn" id="downloadMp3">
+                            <i class="fas fa-download"></i> Download MP3
+                        </button>
+                        <button class="share-btn" id="shareBtn">
+                            <i class="fas fa-share"></i> Share Song
+                        </button>
+                    </div>
+                </div>
+
+                <div class="examples-card card">
+                    <h3><i class="fas fa-lightbulb"></i> Example Kavithai</h3>
+                    <div class="examples">
+                        <div class="example-item" onclick="loadExample(0)">
+                            <h4>Morning Peace</h4>
+                            <p>காலை வேளையில் சூரியன் உதிக்கும்...</p>
+                        </div>
+                        <div class="example-item" onclick="loadExample(1)">
+                            <h4>Tamil Beauty</h4>
+                            <p>தமிழ் மொழியின் இனிமை...</p>
+                        </div>
+                        <div class="example-item" onclick="loadExample(2)">
+                            <h4>Divine Love</h4>
+                            <p>அன்பே சிவம் என்ற வாக்கில்...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation Info -->
+                <div class="tech-info card">
+                    <h3><i class="fas fa-cog"></i> Technical Implementation</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-brain"></i>
+                            <h4>AI Models</h4>
+                            <p>MusicGen, AudioLDM, Custom Tamil synthesis</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-music"></i>
+                            <h4>Music Processing</h4>
+                            <p>Real-time audio synthesis with traditional instruments</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-language"></i>
+                            <h4>Tamil Processing</h4>
+                            <p>Advanced phonetic analysis and cultural authenticity</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <h4>Deployment</h4>
+                            <p>Railway backend, Netlify frontend, Docker ready</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for Tamil Music Lovers | Powered by Open Source AI</p>
+            <div class="footer-links">
+                <a href="https://github.com/your-username/tamil-ai-song-generator" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#" onclick="showAbout()">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="#" onclick="showTechDetails()">
+                    <i class="fas fa-code"></i> Tech Details
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="loading-animation">
+                <i class="fas fa-music fa-spin"></i>
+            </div>
+            <h3>Creating Your Tamil Song</h3>
+            <p id="loadingText">Processing your kavithai...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
